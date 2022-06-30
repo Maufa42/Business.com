@@ -36,7 +36,7 @@ Basket: 001,002,001,003
 Total price expected: $73.76
 =end
 
-class Busines
+class Business
   
   attr_accessor :bag
   
@@ -81,9 +81,9 @@ class Busines
   ----------------------------------------------------------\n
   001 | Travel Card Holder | $9.25\n
   002 | Personalised cufflinks | $45.00\n
-  003 | Kids T-shirt | $19.95"
+  003 | Kids T-shirt | $19.95\n"
 
-  puts "Enter the Number of Offers You Want in Bag"
+  puts "\nEnter the Number of Offers You Want in Bag"
   Scan_Input()
 end
 
@@ -96,19 +96,24 @@ def Scan_Input()
   while i<=bag_size-1 do
     puts "Choose the #{i+1} product: "
     # debugger 
-    input = gets.chomp.to_s
-     while !arr.include?(input) && i <= bag_size-1 do
-      puts "Please enter a valid Number(Choose Between [001,002,003])"
-      input = gets.to_s
-      i-=1
-
-      # bag << input3
-    end
-
-    @bag.append(input)
     i=i+1
+    input = gets.chomp.to_s
+     while !arr.include?(input) do
+      puts "Please enter a valid Number(Choose Between [001,002,003])"
+      input = gets.chomp.to_s
+      # i-=1
+       if !arr.include?(input)
+        next
+       else
+        # @bag.append(input)
+        break;
+       end
+    end
+    
+    @bag.append(input)
   end
 # discount()
+p @bag
 end
 end
 
